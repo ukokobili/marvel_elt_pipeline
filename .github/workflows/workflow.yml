@@ -1,0 +1,52 @@
+name: dbt CI workflow
+
+# define events
+on:
+  push:
+    branches:
+      - main
+
+# define environmental variables
+env:
+  DB_HOST: {{ secrets.DB_HOST }}
+  DB_PORT: {{ secrets.DB_PORT }}
+  DB_USER: {{ secrets.DB_USER }}
+  DB_PASS: {{ secrets.DB_PASS }}
+  DB_NAME: {{ secrets.DB_NAME }}
+
+# define the ci job
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.12'
+
+      - name:  Install dbt dependencies
+        run: |
+          pip install dbt-core
+          pip install dbt-postgres
+          dbt deps
+
+      - name: Run dbt models
+        run: dbt run --profiles-dir=dbt/marvel --target=marvel
+
+      - name: Build dbt docs
+        run: dbt docs generate --profiles-dir=dbt/marvel --target=marvel
+
+      - name: Prepare docs for publishing
+        run: |
+          mkdir -p public
+          mv target/* public/
+
+      - name: Build dbt models
+        run: dbt build --profiles-dir=dbt/marvel --target=marvel
+
+
+
