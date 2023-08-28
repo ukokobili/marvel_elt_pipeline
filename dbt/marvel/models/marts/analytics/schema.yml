@@ -5,7 +5,7 @@ model:
   columns:
     - name: character_name
       type: string
-      description: The name of the character.
+      description: The name of the character...
     - name: comic_title
       type: string
       description: The title of the comic book.
