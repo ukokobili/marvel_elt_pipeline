@@ -6,13 +6,13 @@ on:
     branches:
       - main
 
-# define environmental variables
-env:
-  DB_HOST: {{ secrets.DB_HOST }}
-  DB_PORT: {{ secrets.DB_PORT }}
-  DB_USER: {{ secrets.DB_USER }}
-  DB_PASS: {{ secrets.DB_PASS }}
-  DB_NAME: {{ secrets.DB_NAME }}
+# # define environmental variables
+# env:
+#   DB_HOST: {{ secrets.DB_HOST }}
+#   DB_PORT: {{ secrets.DB_PORT }}
+#   DB_USER: {{ secrets.DB_USER }}
+#   DB_PASS: {{ secrets.DB_PASS }}
+#   DB_NAME: {{ secrets.DB_NAME }}
 
 # define the ci job
 jobs:
