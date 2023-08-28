@@ -1,0 +1,23 @@
+marvel:
+  outputs:
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: root
+      password: root
+      dbname: marvel_db
+      schema: staging
+
+    prod:
+      type: postgres
+      threads: 1
+      host: localhost
+      port: 5432
+      user: root
+      password: root
+      dbname: marvel_db
+      schema: production
+
+  target: dev

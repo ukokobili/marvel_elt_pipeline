@@ -1,0 +1,49 @@
+model:
+  name: fct_price_ratio
+  description: The fact table for comic books.
+  materialized: incremental
+  on_schema_change: fail
+
+  columns:
+    - name: comic_id
+      type: int
+      description: The ID of the comic book.
+    - name: character_id
+      type: int
+      description: The ID of the character associated with the comic book.
+    - name: series_id
+      type: int
+      description: The ID of the series that the comic book belongs to.
+    - name: event_id
+      type: int
+      description: The ID of the event that the comic book is a part of.
+    - name: stories_id
+      type: int
+      description: The ID of the stories that are included in the comic book.
+    - name: modified_date
+      type: timestamp
+      description: The date when the comic book was last modified.
+    - name: number_of_pages
+      type: int
+      description: The number of pages in the comic book.
+    - name: print_price
+      type: decimal
+      description: The print price of the comic book.
+    - name: digital_purchase_price
+      type: decimal
+      description: The digital purchase price of the comic book.
+    - name: price_ratio
+      type: decimal
+      description: The ratio of the print price to the digital purchase price.
+    - name: loaded_at
+      type: timestamp
+      description: The timestamp when the data was loaded into the table.
+
+  primary_key: comic_id
+
+  source:
+    ref: stg_comics
+
+  incremental_strategy:
+    type: timestamp
+    field: modified_date

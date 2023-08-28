@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "==2.0.3"
+prefect = "==2.11.3"
+prefect-sqlalchemy = "==0.2.2"
+protobuf = "==4.21.11"
+psycopg2-binary = "==2.9.5"
+sqlalchemy = "==1.4.46"
+python-dotenv = "==1.0.0"
+requests = "==2.31.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

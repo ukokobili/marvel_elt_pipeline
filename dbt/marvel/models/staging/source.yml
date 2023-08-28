@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: staging
+    database: marvel_db
+    schema: public 
+    tables:
+      - name: characters
+      - name: comics
+      - name: stories
+      - name: series
+      - name: events
+
+ 

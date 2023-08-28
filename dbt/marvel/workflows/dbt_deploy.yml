@@ -1,0 +1,49 @@
+name: deploy to prod
+
+on:
+  push:
+    branches:
+      - dbt
+  pull_request:
+    branches:['main']
+
+  env:
+    DB_HOST: {{ secrets.DB_HOST }}
+    DB_PORT: {{ secrets.DB_PORT }}
+    DB_USER: {{ secrets.DB_USER }}
+    DB_PASS: {{ secrets.DB_PASS }}
+    DB_NAME: {{ secrets.DB_NAME }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9.12'
+
+      - name: Install dbt
+        run: |
+          pip install dbt-core
+          pip install dbt-postgres
+          dbt deps
+
+      - name: Run dbt models
+          run: dbt run
+
+      - name: Test dbt models
+          run: dbt test
+
+      - name: Generate dbt docs
+          run: |
+            dbt docs generate
+          
+      - name: Deploy and test dbt models
+          run: dbt build --profiles-dir . --target dbt_deploy
+
+

@@ -1,0 +1,213 @@
+version: 2
+
+models:
+  - name: stg_characters
+    description: "Staging table for Marvel characters..."
+    meta:
+      db: marvel_db
+      schema: staging
+    columns:
+      - name: id
+        description: "Unique identifier for the character."
+        tests:
+          - unique
+          - not_null
+      - name: character_name
+        description: "Name of the Marvel character..."
+      - name: description
+        description: "Brief description of the character."
+      - name: modified_date
+        description: "Date when the character details were last modified."
+      - name: loaded_at
+        description: "Timestamp when the record was loaded to the staging table."
+
+  - name: stg_comics
+    description: "Staging table for comics data"
+    meta:
+      db: marvel_db
+      schema: staging
+    columns:
+      - name: id
+        description: "Unique identifier for the comic"
+        tests:
+          - unique
+          - not_null
+
+      - name: character_id
+        description: "Identifier for the character associated with the comic"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.characters')
+              field: id
+
+      - name: comic_title
+        description: "Title of the comic"
+
+      - name: description
+        description: "Description of the comic"
+
+      - name: modified_date
+        description: "Date the comic was last modified"
+
+      - name: number_of_pages
+        description: "Number of pages in the comic"
+
+      - name: print_price
+        description: "Price for the print version of the comic"
+
+      - name: digital_purchase_price
+        description: "Price for the digital version of the comic"
+
+      - name: loaded_at
+        description: "Timestamp when the data was loaded"
+
+  - name: stg_events
+    description: "Staging table for events data"
+    meta:
+      db: marvel_db
+      schema: staging
+    columns:
+      - name: id
+        description: "Unique identifier for the event"
+        tests:
+          - unique
+          - not_null
+
+      - name: character_id
+        description: "Identifier for the character associated with the event"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.characters')
+              field: id
+
+      - name: comic_id
+        description: "Identifier for the comic associated with the event"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.comics')
+              field: id
+
+      - name: event_title
+        description: "Title of the event"
+
+      - name: description
+        description: "Description of the event"
+
+      - name: modified_date
+        description: "Date the event was last modified"
+
+      - name: started
+        description: "Date the event started"
+
+      - name: ended
+        description: "Date the event ended"
+
+      - name: creators
+        description: "Creators of the event"
+
+      - name: creators_role
+        description: "Role of the creators in the event"
+
+      - name: loaded_at
+        description: "Timestamp when the data was loaded"
+
+  - name: stg_series
+    description: "Staging table for series data"
+    meta:
+      db: marvel_db
+      schema: staging
+    columns:
+      - name: id
+        description: "Unique identifier for the series"
+        tests:
+          - unique
+          - not_null
+
+      - name: character_id
+        description: "Identifier for the character associated with the series"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.characters')
+              field: id
+
+      - name: comic_id
+        description: "Identifier for the comic associated with the series"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.comics')
+              field: id
+
+      - name: series_title
+        description: "Title of the series"
+
+      - name: description
+        description: "Description of the series"
+
+      - name: modified_date
+        description: "Date the series was last modified"
+
+      - name: start_year
+        description: "Year the series started"
+
+      - name: end_year
+        description: "Year the series ended"
+
+      - name: rating
+        description: "Rating of the series"
+
+      - name: type
+        description: "Type of the series"
+
+      - name: loaded_at
+        description: "Timestamp when the data was loaded"
+
+  - name: stg_stories
+    description: "Staging table for stories data with deduplication"
+    meta:
+      db: marvel_db
+      schema: staging
+    columns:
+      - name: id
+        description: "Unique identifier for the story"
+        tests:
+          - unique
+          - not_null
+
+      - name: character_id
+        description: "Identifier for the character associated with the story"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.characters')
+              field: id
+
+      - name: comic_id
+        description: "Identifier for the comic associated with the story"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging.comics')
+              field: id
+
+      - name: stories_title
+        description: "Title of the story"
+
+      - name: description
+        description: "Description of the story"
+
+      - name: modified_date
+        description: "Date the story was last modified"
+
+      - name: type
+        description: "Type of the story"
+
+      - name: loaded_at
+        description: "Timestamp when the data was loaded"
+
+      - name: dedup
+        description: "Row number for deduplication purposes"

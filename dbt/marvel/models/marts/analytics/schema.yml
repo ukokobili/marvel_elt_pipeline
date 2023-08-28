@@ -1,0 +1,90 @@
+model:
+  name: obt_price_ratio
+  description: The one big table price ratio.
+
+  columns:
+    - name: character_name
+      type: string
+      description: The name of the character.
+    - name: comic_title
+      type: string
+      description: The title of the comic book.
+    - name: event_title
+      type: string
+      description: The title of the event.
+    - name: event_started
+      type: date
+      description: The start date of the event.
+    - name: event_ended
+      type: date
+      description: The end date of the event.
+    - name: event_creators
+      type: string
+      description: The creators of the event.
+    - name: event_creators_role
+      type: string
+      description: The role of the creators in the event.
+    - name: series_title
+      type: string
+      description: The title of the series.
+    - name: series_start_year
+      type: int
+      description: The start year of the series.
+    - name: series_end_year
+      type: int
+      description: The end year of the series.
+    - name: series_rating
+      type: string
+      description: The rating of the series.
+    - name: series_type
+      type: string
+      description: The type of the series.
+    - name: stories_title
+      type: string
+      description: The title of the story.
+    - name: stories_type
+      type: string
+      description: The type of the story.
+    - name: full_date
+      type: timestamp
+      description: The full date of the price ratio.
+    - name: year
+      type: int
+      description: The year of the price ratio.
+    - name: week
+      type: int
+      description: The week of the year of the price ratio.
+    - name: day
+      type: int
+      description: The day of the month of the price ratio.
+    - name: fiscal_year
+      type: int
+      description: The fiscal year of the price ratio.
+    - name: fiscal_qtr
+      type: int
+      description: The fiscal quarter of the price ratio.
+    - name: month
+      type: int
+      description: The month of the price ratio.
+    - name: month_name
+      type: string
+      description: The name of the month of the price ratio.
+    - name: week_day
+      type: int
+      description: The day of the week of the price ratio.
+    - name: day_name
+      type: string
+      description: The name of the day of the week of the price ratio.
+    - name: day_is_weekday
+      type: boolean
+      description: Whether the day of the price ratio is a weekday.
+    - name: loaded_at
+      type: timestamp
+      description: The timestamp when the data was loaded into the table.
+
+  primary_key: full_date
+
+  source:
+    ref: fct_price_ratio
+
+
