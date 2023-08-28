@@ -3,8 +3,7 @@ name: dbt CI workflow
 # define events
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
 
 # define the ci job
 jobs:
