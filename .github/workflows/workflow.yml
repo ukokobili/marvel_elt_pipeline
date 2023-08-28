@@ -11,14 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # # define environmental variables
-    # env:
-    #   DB_HOST: {{ secrets.DB_HOST }}
-    #   DB_PORT: {{ secrets.DB_PORT }}
-    #   DB_USER: {{ secrets.DB_USER }}
-    #   DB_PASS: {{ secrets.DB_PASS }}
-    #   DB_NAME: {{ secrets.DB_NAME }}
-
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -32,13 +24,6 @@ jobs:
         run: |
           pip install dbt-core
           pip install dbt-postgres
-          dbt deps
-
-      - name: Navigate to dbt project directory
-        run: cd marvel_elt_pipeline/dbt/marvel
-
-      - name: Run dbt models
-        run: dbt run --profiles-dir=. --target=marvel
 
       - name: Build dbt docs
         run: dbt docs generate --profiles-dir=. --target=marvel
