@@ -2,7 +2,7 @@ name: dbt CI workflow
 
 # define events
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -16,7 +16,7 @@ env:
 
 # define the ci job
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
