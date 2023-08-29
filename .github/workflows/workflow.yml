@@ -28,6 +28,7 @@ jobs:
           python-version: '3.9.12'
 
       - name:  Install dbt dependencies
+        working-directory: ./dbt
         run: |
           pip install dbt-core
           pip install dbt-postgres
