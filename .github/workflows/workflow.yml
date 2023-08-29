@@ -2,7 +2,7 @@ name: dbt CI workflow
 
 # define events
 on:
-  pull_request:
+  push:
     branches: ['main']
 
 # define the ci job
