@@ -31,7 +31,6 @@ jobs:
         run: |
           pip install dbt-core
           pip install dbt-postgres
-          dbt deps
 
       - name: Run dbt models
         working-directory: ./dbt
