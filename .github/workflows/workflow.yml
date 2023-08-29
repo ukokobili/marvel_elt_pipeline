@@ -2,7 +2,7 @@ name: dbt CI workflow
 
 # define events
 on:
-  push:
+  pull_request:
     branches: ['main']
 
 # define the ci job
@@ -26,18 +26,19 @@ jobs:
           dbt deps
 
       - name: Run dbt models
-        run: dbt run --profiles-dir . --target c
+        working-directory: ./dbt
+        run: dbt run --profiles-dir . --target prod
 
       - name: Build dbt docs
-        run: dbt docs generate --profiles-dir . --target c
+        working-directory: ./dbt
+        run: dbt docs generate --profiles-dir . --target prod
 
       - name: Prepare docs for publishing
+        working-directory: ./dbt
         run: |
           mkdir -p public
           mv target/* public/
 
       - name: Build dbt models
-        run: dbt build --profiles-dir . --target c
-
-
-
+        working-directory: ./dbt
+        run: dbt build --profiles-dir . --target prod
