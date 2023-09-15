@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.9.12'
 
-      - name:  Install dbt dependencies
+      - name: Install dbt dependencies
         working-directory: ./dbt
         run: |
           pip install dbt-core
@@ -30,21 +30,14 @@ jobs:
         uses: mwhitaker/dbt-action@master
         with:
           dbt_command: "dbt run --target prod --profiles-dir ." 
-        
-        # define set variable
-        env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-
-      
 
       - name: Build dbt models
         working-directory: ./dbt
         uses: mwhitaker/dbt-action@master
         with:
           dbt_command: "dbt build --target prod --profiles-dir ." 
-        
-        # define set variable
-        env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
+
+      # define set variables once
+      env:
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASS: ${{ secrets.DB_PASS }}
