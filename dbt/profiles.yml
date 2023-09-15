@@ -6,8 +6,8 @@ marvel:
       threads: 1
       host: marvel-db-instance.costxf40yxh2.us-east-1.rds.amazonaws.com
       port: 5432
-      user: _user_  
-      pass: _password_
+      user: postgres 
+      pass: Awesome2023
       dbname: marvel_db
       schema: staging
 
@@ -16,8 +16,8 @@ marvel:
       threads: 1
       host: marvel-db-instance.costxf40yxh2.us-east-1.rds.amazonaws.com
       port: 5432
-      user: _user_  
-      pass: _password_
+      user: postgres  
+      pass: Awesome2023
       dbname: marvel_db
       schema: production
 
