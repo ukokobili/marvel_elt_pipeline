@@ -1,15 +1,4 @@
 services:
-  marvel:
-    image: postgres:15
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
-    volumes:
-      - marvel_data:/var/lib/postgresql/data:rw
-    ports:
-      - "5432:5432"
-
   metabase:
     image: metabase/metabase
     restart: always
@@ -22,10 +11,6 @@ services:
       - MB_DB_HOST=${MB_DB_HOST}
     ports:
       - "3000:3000"
-    depends_on:
-      - marvel
 
-volumes:
-  marvel_data:
 
 # pgcli -h localhost -p 5432 -U root -d marvel_db

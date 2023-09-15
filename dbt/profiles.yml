@@ -1,23 +1,30 @@
 marvel:
   outputs:
+
     dev:
       type: postgres
       threads: 1
-      host: localhost
-      port: 5432
-      user: root
-      password: root
-      dbname: marvel_db
+      host: ${{ secrets.DB_HOST }}
+      port: ${{ secrets.DB_PORT }}
+      user: ${{ secrets.DB_USER }}
+      pass: ${{ secrets.DB_PASS }}
+      dbname: ${{ secrets.DB_NAME }}
       schema: staging
 
     prod:
       type: postgres
       threads: 1
-      host: localhost
-      port: 5432
-      user: root
-      password: root
-      dbname: marvel_db
+      host: ${{ secrets.DB_HOST }}
+      port: ${{ secrets.DB_PORT }}
+      user: postgres 
+      pass: ${{ secrets.DB_PASS }}
+      dbname: ${{ secrets.DB_NAME }}
       schema: production
 
   target: dev
+
+ DB_HOST: 
+  DB_PORT: 
+  DB_USER: 
+  DB_PASS: 
+  DB_NAME:
