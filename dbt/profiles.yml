@@ -4,21 +4,22 @@ marvel:
     dev:
       type: postgres
       threads: 1
-      host: ${{ secrets.DB_HOST }}
-      port: ${{ secrets.DB_PORT }}
-      user: ${{ secrets.DB_USER }}
-      pass: ${{ secrets.DB_PASS }}
-      dbname: ${{ secrets.DB_NAME }}
+      host: marvel-db-instance.costxf40yxh2.us-east-1.rds.amazonaws.com
+      port: 5432
+      user: postgres 
+      pass: Awesome2023
+      dbname: marvel_db
       schema: staging
 
     prod:
       type: postgres
       threads: 1
-      host: ${{ secrets.DB_HOST }}
-      port: ${{ secrets.DB_PORT }}
+      host: marvel-db-instance.costxf40yxh2.us-east-1.rds.amazonaws.com
+      port: 5432
       user: postgres 
-      pass: ${{ secrets.DB_PASS }}
-      dbname: ${{ secrets.DB_NAME }}
+      pass: Awesome2023
+      dbname: marvel_db
       schema: production
 
   target: dev
+
