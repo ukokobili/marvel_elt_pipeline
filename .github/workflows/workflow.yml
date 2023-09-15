@@ -5,14 +5,6 @@ on:
   push:
     branches: ['main']
 
-# define set variable
-env:
-  DB_HOST: ${{ secrets.DB_HOST }}
-  DB_PORT: ${{ secrets.DB_PORT }}
-  DB_USER: ${{ secrets.DB_USER }}
-  DB_PASS: ${{ secrets.DB_PASS }}
-  DB_NAME: ${{ secrets.DB_NAME }}
-
 # define the ci job
 jobs:
   build:
@@ -35,18 +27,24 @@ jobs:
 
       - name: Run dbt models
         working-directory: ./dbt
-        run: dbt run --target prod --profiles-dir . 
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt run --target prod --profiles-dir ." 
+        
+        # define set variable
+        env:
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
 
-      - name: Build dbt docs
-        working-directory: ./dbt
-        run: dbt docs generate --target prod --profiles-dir . 
-
-      - name: Prepare docs for publishing
-        working-directory: ./dbt
-        run: |
-          mkdir -p public
-          mv target/* public/
+      
 
       - name: Build dbt models
         working-directory: ./dbt
-        run: dbt build --target prod --profiles-dir . 
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt build --target prod --profiles-dir ." 
+        
+        # define set variable
+        env:
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
