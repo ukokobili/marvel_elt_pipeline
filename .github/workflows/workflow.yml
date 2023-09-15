@@ -24,13 +24,7 @@ jobs:
         run: |
           pip install dbt-core
           pip install dbt-postgres
-
-      - name: Run dbt models
-        working-directory: ./dbt
-        uses: mwhitaker/dbt-action@master
-        with:
-          dbt_command: "dbt run --target prod --profiles-dir ." 
-
+          
       - name: Build dbt models
         working-directory: ./dbt
         uses: mwhitaker/dbt-action@master
