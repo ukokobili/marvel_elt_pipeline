@@ -35,11 +35,11 @@ jobs:
 
       - name: Run dbt models
         working-directory: ./dbt
-        run: dbt run --profiles-dir . --target prod
+        run: dbt run --target prod --profiles-dir . 
 
       - name: Build dbt docs
         working-directory: ./dbt
-        run: dbt docs generate --profiles-dir . --target prod
+        run: dbt docs generate --target prod --profiles-dir . 
 
       - name: Prepare docs for publishing
         working-directory: ./dbt
@@ -49,4 +49,4 @@ jobs:
 
       - name: Build dbt models
         working-directory: ./dbt
-        run: dbt build --profiles-dir . --target prod
+        run: dbt build --target prod --profiles-dir . 
