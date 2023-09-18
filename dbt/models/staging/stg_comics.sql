@@ -1,8 +1,8 @@
 with source as (
     select 
         id,
-        cast(character_id as int) as character_id,
-        title as comic_title,
+        cast(character_id as int) as character_id, 
+        regexp_replace(title, '\(\d{4}\) #-?\d+', '') as comic_title, 
         description,
         date(modified_date) as modified_date,
         cast(number_of_pages as int) as number_of_pages,
