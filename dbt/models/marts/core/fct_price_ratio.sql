@@ -23,7 +23,7 @@ select
     *
 from source
 
-# incremental model
+-- incremental model
 {% if is_incremental() %}
     where modified_date > (select max(modified_date) from {{ this }})
 {% endif %}
