@@ -25,6 +25,10 @@ jobs:
           pip install dbt-core
           pip install dbt-postgres
 
+      - name: Run full dbt models refresh
+        working-directory: ./dbt
+        run: dbt run --full-refresh --target prod --profiles-dir . 
+
       - name: Build dbt models
         working-directory: ./dbt
         run: dbt build --target prod --profiles-dir . 
