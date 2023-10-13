@@ -48,6 +48,9 @@ In order to run this project step-by-step you need to install the following pack
 5. Install ```dbt core``` on your local machine. Please refer to [this tutorial](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb) install and run ```dbt core```.
 6. Implement the ```GitHub Action``` by creating the ```.github/workflows``` dir in the main branch and add the ```workflow.yml``` file to the ```.github/workflows``` dir
 7. Connect the ```Qlik Sense``` to the ```AWS RDS``` and create your visualization.
-## Lessons Learned
 
-## Concat
+## Lessons Learned
+One of the key takeaways from this project is the importance of scalability and flexibility in designing data pipelines. By utilizing cloud-based solutions like AWS RDS PostgreSQL, the project ensures scalability to handle varying data volumes. Additionally, the ability to adapt to changing requirements, data sources, and business needs is crucial. The choice of modular tools and technologies facilitates easy modifications and enhancements to the pipeline, allowing it to evolve alongside the organization's requirements.
+
+## Contact
+You can reach me on [LinkedIn](https://www.linkedin.com/in/jacobukokobili/) to learn more about this project, and I'm open to collaboration.
