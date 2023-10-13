@@ -15,9 +15,19 @@ This project is an ELT data pipeline using modern data stacks. It retrieves data
 ## Data Visualization
 ![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/Marvel_Dashboard.png)
 
+## Conceptual Model
+![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/conceptual_model.png)
+
+## Logical Model
+![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/logical_model.png)
+
+## dbt Dag
+![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/dbt-dag.png)
+
 ## Data Architecture
 ![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/Marvel_ELT_Achitecture.png)
 I chose the following tools for this project because they are a good combination for learning about ```ELT```, workflow orchestration, as well as ```CI/CD```, and they also collectively address data extraction, automation, transformation, modeling, and deployment needs for a data pipeline project.
+
 
 ### Architecture and Tools Summary:
 * **Data Source**: ```Marvel API``` for data source.
