@@ -13,7 +13,7 @@
 This project is an ELT data pipeline using modern data stacks. It retrieves data from the ```Marvel API```, ingests it into ```AWS RDS Postgres``` using a ```Python``` script, which is automated by ```Prefect's``` workflow orchestration tool, transforms data with ```dbt``` to build a dimensional model, and loads it into a PostgreSQL database for analytics. Additionally, it employs ```GitHub Action``` ```CI/CD``` to create a workflow that builds models each time changes are made and pushed to the main branch of the ```Git``` repository.
 
 ## Data Visualization
-![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/Marvel_Studio_Dashboard.png)
+![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/Marvel_Dashboard.png)
 
 ## Data Architecture
 ![](https://github.com/ukokobili/marvel_elt_pipeline/blob/main/images/Marvel_ELT_Achitecture.png)
@@ -30,9 +30,24 @@ I chose the following tools for this project because they are a good combination
 * **Data Analytics and Visualization**: ```Qlik Sense``` for creating interactive dashboards, data exploration, and reporting.
 
 ## Prerequisites
-
+* Marvel Studio API Keys
+* Python
+* Prefect CLI
+* AWS RDS Account
+* dbt core
+* GitHub Action
+* Docker
+* Qlik Sense Account
+  
 ## How to Run This Project
-
+In order to run this project step-by-step you need to install the following packages:
+1. Run ```pip install pipenv`` to create a virtual environment
+2. Install the dependencies by running ```pipenv install -r requirements.txt```
+3. Enter your Marvel Studio API secrets credentials in ```.env``` file
+4. Run the ```extract_load.py``` file to start the EL(Extract & Load phase) with ```Prefect```. Please refer to [this tutorial](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb) on how to configure Prefect.
+5. Install ```dbt core``` on your local machine. Please refer to [this tutorial](https://www.youtube.com/playlist?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb) install and run ```dbt core```.
+6. Implement the ```GitHub Action``` by creating the ```.github/workflows``` dir in the main branch and add the ```workflow.yml``` file to the ```.github/workflows``` dir
+7. Connect the ```Qlik Sense``` to the ```AWS RDS``` and create your visualization.
 ## Lessons Learned
 
 ## Concat
