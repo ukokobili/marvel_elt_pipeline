@@ -8,7 +8,7 @@ models:
       schema: staging
     columns:
       - name: id
-        description: "Unique identifier for the character."
+        description: "Unique identifier for the character..."
         tests:
           - unique
           - not_null
